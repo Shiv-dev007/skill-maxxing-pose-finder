@@ -50,7 +50,7 @@ function App() {
     try {
       const data = await request(`${API}/rename/apply`, { method: "POST" });
       setImages(data.images || []); setShowPreview(false);
-      setNotice(`Renamed ${data.renamed} file(s) in Google Drive. You can undo the last rename batch.`);
+      setNotice(`Renamed ${data.renamed} file(s) in Google Drive. ${data.failures?.length ? `${data.failures.length} file(s) could not be renamed; check your Drive permissions.` : "All selected files were renamed."} You can undo the successful changes.`);
     } catch (err) { setError(err.message); }
     finally { setRenaming(false); }
   }
