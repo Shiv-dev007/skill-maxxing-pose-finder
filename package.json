@@ -16,7 +16,8 @@
     "vite": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest"
+    "lucide-react": "latest",
+    "dotenv": "^16.6.1"
   },
   "devDependencies": {}
 }
