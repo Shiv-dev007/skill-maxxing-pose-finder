@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import { GoogleGenAI } from "@google/genai";
 import fs from "node:fs/promises";
