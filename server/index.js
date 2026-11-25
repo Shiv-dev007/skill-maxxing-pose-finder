@@ -224,6 +224,8 @@ app.post("/api/rename/apply", async (_req, res) => {
     });
     const operations = [];
     const failures = [];
+    const historyBatch = { id: `rename-${Date.now()}`, createdAt: new Date().toISOString(), operations };
+    renameHistory.push(historyBatch);
     for (const item of preview) {
       if (item.currentName === item.proposedName) continue;
       try {
@@ -235,11 +237,12 @@ app.post("/api/rename/apply", async (_req, res) => {
         const indexed = poseIndex.find((entry) => entry.id === item.id);
         if (indexed) { indexed.name = result.data.name; indexed.modifiedTime = result.data.modifiedTime || indexed.modifiedTime; }
         // Persist each successful change immediately so a later API failure cannot lose its undo record.
-        renameHistory.push({ id: `rename-${Date.now()}-${item.id}`, createdAt: new Date().toISOString(), operations: [operations[operations.length - 1]] });
         await saveJson(HISTORY_FILE, renameHistory);
         await saveJson(INDEX_FILE, poseIndex);
       } catch (error) { failures.push({ id: item.id, name: item.currentName, error: error.message }); }
     }
+    if (!operations.length) renameHistory.pop();
+    await saveJson(HISTORY_FILE, renameHistory);
     res.json({ renamed: operations.length, operations, failures, images: poseIndex });
   } catch (error) { res.status(500).json({ error: error.message || "Bulk rename failed." }); }
 });
