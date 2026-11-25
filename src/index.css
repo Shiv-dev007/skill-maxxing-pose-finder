@@ -71,3 +71,8 @@ button{cursor:pointer}
 .open-drive-button{border:1px solid #414a37;color:#d9dece}
 @media(max-width:900px){.app-shell{padding:0 28px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-frame{height:200px}}
 @media(max-width:620px){.app-shell{padding:0 18px}.topbar{height:65px}.topbar-right{font-size:8px}.hero{padding:66px 0 45px}.hero h1{letter-spacing:-2px}.hero-copy{font-size:13px}.search-wrap{height:56px;padding:0 12px;gap:9px}.search-wrap input{font-size:12px}.search-shortcut{display:none}.image-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.image-frame{height:170px}.section-heading h2{font-size:20px}.footer{font-size:8px}.results-line{font-size:8px}}
+
+.pose-description{padding:0 11px;margin:0 0 10px;color:#a3aa98;font-size:10px;line-height:1.55;min-height:31px}
+.pose-tags{display:flex;gap:5px;flex-wrap:wrap;padding:0 11px 12px}
+.pose-tags span{font-family:'DM Mono',monospace;font-size:8px;color:#c6f36a;background:#28311f;border:1px solid #3a482b;border-radius:20px;padding:4px 7px}
+.modal-description{color:#aeb5a3;font-size:12px;line-height:1.7;margin:13px 2px 0}
